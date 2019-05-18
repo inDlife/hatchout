@@ -1,13 +1,13 @@
 import {Injectable} from '@nestjs/common';
 import { User } from '../domain/user.entity';
 import { Controller, Post, Body, Get, Put, Delete, Param} from '@nestjs/common';
-import {UsersService} from '../application/users.service';
+import {UserService} from '../application/user.service';
 
 @Injectable()
 @Controller('users')
 export class UsersController {
 
-    constructor(private service: UsersService) { }
+    constructor(private service: UserService) { }
 
     @Get(':id')
     get(@Param() params) {

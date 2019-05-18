@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import {User} from './domain/user.entity';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {UserServiceImpl} from './application/user.service.impl';
-import {UserService} from './domain/user.service';
+import {ValidateService} from './domain/validateService';
 
 import * as api from './application/user.service.impl';
-import * as domain from  './domain/user.service.impl';
+import * as domain from './domain/validateService.impl';
 
 @Module({
     imports: [
@@ -25,7 +25,7 @@ import * as domain from  './domain/user.service.impl';
     ],
     providers: [
         api.UserServiceImpl,
-        domain.UserServiceImpl,
+        domain.ValidateServiceImpl,
     ],
 })
 export class UsersModule {}

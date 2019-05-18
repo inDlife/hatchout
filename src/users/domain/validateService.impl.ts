@@ -1,12 +1,11 @@
-import {UserService} from './user.service';
+import {ValidateService} from './validateService';
 import {Injectable} from '@nestjs/common';
 import {User} from './user.entity';
 import {InjectRepository} from '@nestjs/typeorm';
-import {UserRepository} from './user.repository';
-import {UsersRepository} from '../infra/users.repository';
+import {IUserRepository, UserRepository} from '../infra/userRepository';
 
 @Injectable()
-export class UserServiceImpl implements UserService {
+export class ValidateServiceImpl implements ValidateService {
 
     constructor(@InjectRepository(User) private usersRepository: UserRepository) {}
 
@@ -19,18 +18,6 @@ export class UserServiceImpl implements UserService {
         return user == undefined;
     }
 
-    async isAbleToDelete(id: number): Promise<boolean> {
-        if (id == null) {
-            return false;
-        }
-
-        const user = await this.usersRepository.findById(id);
-        return user != undefined;
-    }
-
-    async isAbleToGet(id: number): Promise<boolean> {
-        return id != null;
-    }
 
     async isAbleToUpdate(address: string): Promise<boolean> {
         if (address == undefined) {
