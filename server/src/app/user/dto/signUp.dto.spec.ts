@@ -1,6 +1,6 @@
-import {SignUpDto} from './signUp.dto';
+import { SignUpDto } from './signUp.dto';
 
-describe('SignUpPayload', () => {
+describe('SignUpDto', () => {
   it('should be defined', () => {
     expect(new SignUpDto({address: 'address', message: 'message'}, 'signature')).toBeDefined();
   });
