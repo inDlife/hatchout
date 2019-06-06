@@ -1,0 +1,58 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: de-labtory
+      MYSQL_USER: de-labtory
+      MYSQL_PASSWORD: de-labtory
+      MYSQL_DATABASE: hatchout
+    volumes:
+      - data:/var/lib/mysql
+    container_name: typeorm-mysql
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+volumes:
+  data:
+
+
+
+
+#version: '3.3'
+#services:
+#  db:
+#    image: mysql:5.7
+#    restart: always
+##    command: --default-authentication-plugin=mysql_native_password
+##    entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
+##    env_file:
+##      - env/mysql.env
+#
+#    environment:
+#      MYSQL_USER: "delabtory"
+#      MYSQL_PASSWORD: "delabtory"
+#      MYSQL_ROOT_PASSWORD: example
+#      MYSQL_DATABASE: "hatchout"
+#    volumes:
+#      - "mysql:/var/lib/mysql"
+#
+#    container_name: "typeorm-mysql"
+#    ports:
+#      - "3306:3306"
+#    expose:
+#      - '3306'
+#
+#
+#volumes:
+#  mysql:

@@ -1,13 +1,15 @@
-import {BadRequestException, Inject, Injectable} from '@nestjs/common';
+import {BadRequestException, Injectable} from '@nestjs/common';
 import {UserService} from './user.service';
 import {UserDto} from './dto/user.dto';
 import {User} from '../../domain/user/user.entity';
-import {DeleteResult} from 'typeorm';
+import {DeleteResult } from 'typeorm';
 import {IUserRepository} from '../../domain/user/user.repository';
+import {InjectRepository} from '@nestjs/typeorm';
 
 @Injectable()
 export class UserServiceImpl implements UserService {
-    constructor(@Inject('IUserRepository') private userRepository: IUserRepository) {}
+    // constructor(private readonly userRepository: UserRepository) {}
+    constructor(@InjectRepository(User) private userRepository: IUserRepository) {}
 
     async get(id: number): Promise<User> {
         const user = await this.userRepository.findById(id);

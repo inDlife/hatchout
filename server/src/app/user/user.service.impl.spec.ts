@@ -21,9 +21,8 @@ describe('UserServiceImpl', () => {
         it('should be defined', async () => {
             const module: TestingModule = await Test.createTestingModule({
                 providers: [
-                    UserServiceImpl,
                     {
-                        provide: 'IUserRepository',
+                        provide: 'UserRepository',
                         useValue: instance(mockRepository),
                     },
                 ],
